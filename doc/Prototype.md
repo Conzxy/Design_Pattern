@@ -28,8 +28,4 @@
 
 * **客户端**：复制实现了原型接口的任何对象
 
-## Sample Code
-
-```cpp
-
-```
+## [Sample Code](https://github.com/Conzxy/Design_Pattern/blob/main/src/Prototype.h)
