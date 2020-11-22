@@ -120,5 +120,15 @@ void client(Director& director){
   p=build->getProduct();
   p->listParts();
 }
+
+/*
+ * int main(){
+  Director* director=new Director();
+  client(*director);
+  delete director;
+
+  return 0;
+}
+ */
   
 #endif //DESIGN_PATTERN_BUILDER_H

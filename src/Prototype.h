@@ -78,4 +78,12 @@ void ClientCode(ProtoTypeFactory &pf){
     pp->Method(20.0);
     delete pp;
 }
+
+/*
+ * int main(){
+ *     ProtoTypeFactory pf;
+ *     ClientCode(pf);
+ *     return 0;
+ * }
+ */
 #endif //DESIGN_PATTERN_PROTOTYPE_H

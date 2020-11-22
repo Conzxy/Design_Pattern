@@ -1,7 +1,3 @@
-//
-// Created by 谁敢反对宁宁，我就打爆他狗头！ on 2020/8/5.
-//
-
 #ifndef DESIGN_PATTERN_FACTORY_METHOD_H
 #define DESIGN_PATTERN_FACTORY_METHOD_H
 
