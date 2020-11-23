@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <memory>
 
 enum class Type{
     PT_1=0,PT_2
@@ -18,10 +19,12 @@ public:
 
     virtual ProtoType* clone()const =0;
 
+    static ProtoType* getPrototype(std::string const& resc);
+
     virtual void Method(double f){
         this->field=f;
-        std::cout<<"Call Method from"<<name
-                 <<"with field:"<<field;
+        std::cout<<"Call Method from "<<name
+                 <<" with field: "<<field;
     }
 };
 
@@ -79,11 +82,36 @@ void ClientCode(ProtoTypeFactory &pf){
     delete pp;
 }
 
-/*
- * int main(){
- *     ProtoTypeFactory pf;
- *     ClientCode(pf);
- *     return 0;
- * }
- */
+void ClientCode2(){
+    auto p=ProtoType::getPrototype("Prototype1");
+    p->Method(4.0);
+    delete p;
+    std::cout<<std::endl;
+
+    p=ProtoType::getPrototype("Prototype2");
+    p->Method(5.0);
+    delete p;
+    std::cout<<std::endl;
+
+    p=ProtoType::getPrototype("Prototype2");
+    p->Method(1.0);
+    delete p;
+}
+
+//请在执行文件定义
+ProtoType * ProtoType::getPrototype(const std::string &resc) {
+    if(resc=="Prototype1"){
+        static std::unique_ptr<ProtoType> p1
+        =std::make_unique<ConcreteProtoType1>("Prototype1",20.0);
+        return p1->clone();
+    }
+    else if(resc=="Prototype2"){
+        static std::unique_ptr<ProtoType> p2
+        =std::make_unique<ConcreteProtoType2>("Prototype2",30.0);
+        return p2->clone();
+    }
+    else{
+        return nullptr;
+    }
+}
 #endif //DESIGN_PATTERN_PROTOTYPE_H
